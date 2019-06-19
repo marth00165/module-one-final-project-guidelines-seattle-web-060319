@@ -3,6 +3,7 @@ require "HTTParty"
 require "pry"
 
 
+
 class Scraper
     attr_accessor :parse_page
 
@@ -18,6 +19,4 @@ class Scraper
   def get_words
     item_container.css("b").map{|item| item.text}.compact
   end
-
-
 end

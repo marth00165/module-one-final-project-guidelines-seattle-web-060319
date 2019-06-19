@@ -8,3 +8,6 @@ gem "require_all"
 gem "rake"
 gem 'nokogiri'
 gem 'httparty'
+gem "httparty"
+gem "nokogiri"
+gem "rest-client"
