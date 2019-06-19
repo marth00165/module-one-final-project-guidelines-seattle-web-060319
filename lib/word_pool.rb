@@ -27,10 +27,10 @@ def correct_word(arr)
         correct_word(arr)
     else 
         used_words.push(word)
-        binding.pry
+        # binding.pry
         return word
     end
 end
 
-Pry.start
-0
+# Pry.start
+# 0
