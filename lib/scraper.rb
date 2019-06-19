@@ -23,6 +23,7 @@ class Scraper
 
 end
 
+example2 = Scraper.new
 
 
 
