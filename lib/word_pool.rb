@@ -1,7 +1,7 @@
 require_relative '../lib/scraper'
 require 'pry'
 
-#class WordPool < ActiveRecord::Base
+class WordPool < ActiveRecord::Base
 
 example = Scraper.new
 rwp = example.get_words
@@ -22,13 +22,11 @@ end
 #need to filter against that db to ensure we aren't repeating words in questions
 def correct_word(arr)
     correct_word = filter(arr)
-    used_words = []
-    if word == used_words.select {|word|}    
+    Answers.create(correct_word)
+    if correct.word == Answers.find(correct_word)    
         correct_word(arr)
     else 
-        used_words.push(word)
-        # binding.pry
-        return word
+        return correct_word
     end
 end
 
