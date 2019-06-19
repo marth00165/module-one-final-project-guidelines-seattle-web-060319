@@ -9,7 +9,7 @@ class Question
 end
 
 p1 = "What color are apples?\n(a) Red/Green\n(b)Orange\n(c) Blue\n(d)Pink"
-p2 = "What color are bananas?\n(a) Red/Green\n(b)Yellow\n(c) Blue\n(c)Pink"
+p2 = "What color are bananas?\n(a) Red/Green\n(b)Yellow\n(c) Blue\n(d)Pink"
 
 
 questions = [
@@ -31,9 +31,3 @@ def run_quiz(questions)
 end
 
 run_quiz(questions)
-
-
-
-
-binding.pry
-0
