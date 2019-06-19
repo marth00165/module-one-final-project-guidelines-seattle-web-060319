@@ -3,6 +3,7 @@ require "HTTParty"
 require "pry"
 
 
+
 class Scraper
     attr_accessor :parse_page
 
@@ -23,6 +24,8 @@ class Scraper
 end
 
 example = Scraper.new
+
+
 # arr = example.item_container
 # arr2 = arr.shift
 # arr3 = arr2.shift

@@ -1,5 +1,6 @@
 require_relative '../config/environment'
 
+
 class Question
      attr_accessor :prompt, :answer
      def initialize(prompt, answer)
@@ -29,5 +30,4 @@ def run_quiz(questions)
      end
      puts "you got #{score} out of #{questions.length()}"
 end
-
 run_quiz(questions)
