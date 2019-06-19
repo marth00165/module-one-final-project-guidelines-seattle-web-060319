@@ -1,25 +1,28 @@
 require_relative '../lib/scraper'
 require 'pry'
 
+#class WordPool < ActiveRecord::Base
+
 example = Scraper.new
 rwp = example.get_words
 
-def filter(arr)
- filtered_word_pool = []
- word = arr.sample
-
-    if word.include?(",") || word.include?("(")
-        filter(arr)
-    else
-        filtered_word_pool.push(word)
-        return filtered_word_pool
+def filter(arr)#returns clean word for API
+    filtered_word = []
+    word = arr.sample
+        if word.include?(",") || word.include?("(")
+            filter(arr)
+        else
+            filtered_word.push(word)
+        end
     end
+    return filtered_word[0]
 end
 
 
-
+#need to create a db of chosen words
+#need to filter against that db to ensure we aren't repeating
 def correct_word(arr)
-    word = filter(arr).sample
+    correct_word = filter(arr)
     used_words = []
     if word == used_words.select {|word|}    
         correct_word(arr)
@@ -38,9 +41,7 @@ end
 #     end
 # end
 
-
-
-filter(rwp)
+#end
 
 Pry.start
 0
