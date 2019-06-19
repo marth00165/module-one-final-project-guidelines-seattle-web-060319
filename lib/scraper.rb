@@ -23,7 +23,7 @@ class Scraper
 
 end
 
-example = Scraper.new
+
 
 
 # arr = example.item_container

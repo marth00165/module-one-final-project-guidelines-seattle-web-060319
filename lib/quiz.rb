@@ -1,5 +1,15 @@
 require_relative '../config/environment'
 
+example = Scraper.new
+
+correctAns = example.get_words.sample
+
+
+def answer_creator(example)
+  words = example.get_words.sample
+  words
+end
+
 
 class Question
      attr_accessor :prompt, :answer
@@ -9,8 +19,8 @@ class Question
      end
 end
 
-p1 = "What color are apples?\n(a) Red/Green\n(b)Orange\n(c) Blue\n(d)Pink"
-p2 = "What color are bananas?\n(a) Red/Green\n(b)Yellow\n(c) Blue\n(d)Pink"
+p1 = "Which of the following words means: -puts definition here- ?\n(a) #{answer_creator(example)}\n(b)#{answer_creator(example)}\n(c)#{answer_creator(example)}\n(d)#{answer_creator(example)}"
+p2 = "What color are bananas?\n(a) Red/Green\n(b)#{answer_creator(example)}\n(c) Blue\n(d)Pink"
 
 
 questions = [
