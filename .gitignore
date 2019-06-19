@@ -13,3 +13,5 @@ tmp
 
 
 db/*.db
+
+hidden.rb

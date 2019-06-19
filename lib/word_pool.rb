@@ -13,14 +13,13 @@ def filter(arr)#returns clean word for API
             filter(arr)
         else
             filtered_word.push(word)
+            return filtered_word[0]
         end
-    end
-    return filtered_word[0]
 end
 
 
 #need to create a db of chosen words
-#need to filter against that db to ensure we aren't repeating
+#need to filter against that db to ensure we aren't repeating words in questions
 def correct_word(arr)
     correct_word = filter(arr)
     used_words = []
@@ -32,16 +31,6 @@ def correct_word(arr)
         return word
     end
 end
-
-# def wrong_word
-#     if wp.random == word 
-#         wp.random
-#     else
-#         wp.random 
-#     end
-# end
-
-#end
 
 Pry.start
 0
