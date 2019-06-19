@@ -2,14 +2,20 @@ require_relative '../config/environment'
 
 example = Scraper.new
 
-correctAns = example.get_words.sample
+correctAns = example.get_words.sample #same answer
 
 
-def answer_creator(example)
+def fake_answer(example)
   words = example.get_words.sample
   words
 end
 
+answerArr = [correctAns, fake_answer(example), fake_answer(example), fake_answer(example)]
+
+optionA = answerArr.sample
+optionB = answerArr.sample
+optionC = answerArr.sample
+optionD = answerArr.sample
 
 class Question
      attr_accessor :prompt, :answer
@@ -19,8 +25,10 @@ class Question
      end
 end
 
-p1 = "Which of the following words means: -puts definition here- ?\n(a) #{answer_creator(example)}\n(b)#{answer_creator(example)}\n(c)#{answer_creator(example)}\n(d)#{answer_creator(example)}"
-p2 = "What color are bananas?\n(a) Red/Green\n(b)#{answer_creator(example)}\n(c) Blue\n(d)Pink"
+
+
+p1 = "Which of the following words means: -puts definition here- ?\n(a) #{optionA}\n(b)#{optionB}\n(c)#{optionC}\n(d)#{optionD}"
+p2 = "Which of the following words means: -puts definition here- ?\n(a) #{correctAns}\n(b)#{fake_answer(example)}\n(c)#{fake_answer(example)}\n(d)#{fake_answer(example)}"
 
 
 questions = [
@@ -31,6 +39,7 @@ questions = [
 def run_quiz(questions)
      answer = ""
      score = 0
+
      for question in questions
           puts question.prompt
           answer = gets.chomp()

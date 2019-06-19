@@ -31,7 +31,3 @@ end
 # arr3 = arr2.shift
 
 # def split_words(arr)
-
-
-binding.pry
-0
