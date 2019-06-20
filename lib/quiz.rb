@@ -1,5 +1,3 @@
-require_relative '../config/environment'
-
 example = Scraper.new
 
 rwp = example.get_words
@@ -38,7 +36,7 @@ rwp = example.get_words
   optionC = answerArr.sample
   answerArr.delete(optionC)
   optionD = answerArr.sample
-  answerArr.clear
+  answerArr1 = [correctAns, fake_answer(rwp), fake_answer(rwp), fake_answer(rwp)]
 
   options = {'a' => optionA, 'b' => optionB, 'c' => optionC, 'd' => optionD}
 
@@ -58,22 +56,23 @@ p1 = "Which of the following words means: -puts definition here- ?\n(a) #{option
 
 
 questions = [
-     Question.new(p1),
+     Question.new(p1)
      #Question.new(p2, "b")
 ]
 
-def run_quiz(questions, answerArr, options)
+def run_quiz(questions, answers, options)
 
-    correctAns = answerArr[0]
+    correctAnswer = answers[0]
      answer = ""
      score = 0
+
 
      for question in questions
           puts question.prompt
           answer = gets.chomp()
-          if correctAns == options[answer]
+          if correctAnswer == options[answer]
                score += 1
-             elsif correctAns != options[answer]
+             elsif correctAnswer != options[answer]
                score -= 1
 
           end
@@ -81,6 +80,3 @@ def run_quiz(questions, answerArr, options)
      puts "you got #{score} out of #{questions.length()}"
      return score
 end
-
-binding.pry
-0
