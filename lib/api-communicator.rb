@@ -1,6 +1,15 @@
 require 'rest-client'
+require_relative './answer'
+require_relative './scraper.rb'
+require_relative './quiz.rb'
+require'pry'
 
+example = Scraper.new
 
- #
- # x = RestClient.get('https://od-api.oxforddictionaries.com/api/v2/entries/en-gb/+word?strictMatch=false, headers={app_id ="ce9c707e" app_key = "bb1b3f7c5a8edc93aba9be741f039537" }')
- # y = JSON.parse(x)
+rwp = example.get_words
+word = correct_answer(rwp)
+ 
+ x = RestClient.get('https://od-api.oxforddictionaries.com/api/v2/entries/en-gb/#{word}?strictMatch=false, headers={app_id ="#{application_id}" app_key = "#{application_key}" }')
+ y = JSON.parse(x)
+binding.pry
+ return y
