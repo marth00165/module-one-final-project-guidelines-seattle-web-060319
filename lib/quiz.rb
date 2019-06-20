@@ -1,15 +1,16 @@
-require_relative '../config/environment'
+# require_relative './api_communicator.rb'
 
-example = Scraper.new
 
-rwp = example.get_words
+# example = Scraper.new
+
+# rwp = example.get_words
 
 
  #same answer
+     def filter(rwp)#returns clean word for API
+          filtered_word = []
+          word = rwp.sample
 
-  def filter(rwp)#returns clean word for API
-      filtered_word = []
-      word = rwp.sample
           if word.include?(",") || word.include?("(")
               filter(rwp)
           else
@@ -17,7 +18,19 @@ rwp = example.get_words
               return filtered_word[0]
           end
 
-      end
+     end
+
+     def correct_answer(arr)
+          answer = filter(arr)
+          Answer.create(word: filter(arr))
+          if answer == Answer.find_by(word: answer)
+               correct_answer(arr)
+          else 
+               Answer.create(word: answer)
+          end
+          return answer
+     end
+
 
 
   def fake_answer(rwp)
@@ -25,11 +38,12 @@ rwp = example.get_words
     words
   end
 
-  correctAns = filter(rwp)
+# #   correctAns = word
 
 
 
-  answerArr = [correctAns, fake_answer(rwp), fake_answer(rwp), fake_answer(rwp)]
+#   answerArr = [correctAns, fake_answer(rwp), fake_answer(rwp), fake_answer(rwp)]
+
 
   optionA = answerArr.sample
   answerArr.delete(optionA)
@@ -40,21 +54,23 @@ rwp = example.get_words
   optionD = answerArr.sample
   answerArr1 = [correctAns, fake_answer(rwp), fake_answer(rwp), fake_answer(rwp)]
 
-  options = {'a' => optionA, 'b' => optionB, 'c' => optionC, 'd' => optionD}
+
+#   options = {'a' => optionA, 'b' => optionB, 'c' => optionC, 'd' => optionD}
 
 
-class Question
-     attr_accessor :prompt, :answer
-     def initialize(prompt)
-          @prompt = prompt
-          @answer = answer
-     end
-end
+# class Question
+#      attr_accessor :prompt, :answer
+#      def initialize(prompt)
+#           @prompt = prompt
+#           @answer = answer
+#      end
+# end
 
 
 
-p1 = "Which of the following words means: -puts definition here- ?\n(a) #{optionA}\n(b)#{optionB}\n(c)#{optionC}\n(d)#{optionD}"
-#p2 = "Which of the following words means: -puts definition here- ?\n(a) #{correctAns}\n(b)#{fake_answer(example)}\n(c)#{fake_answer(example)}\n(d)#{fake_answer(example)}"
+# p1 = "Which of the following words means: -puts definition here- ?\n(a) #{optionA}\n(b)#{optionB}\n(c)#{optionC}\n(d)#{optionD}"
+# #p2 = "Which of the following words means: -puts definition here- ?\n(a) #{correctAns}\n(b)#{fake_answer(example)}\n(c)#{fake_answer(example)}\n(d)#{fake_answer(example)}"
+
 
 
 questions = [
@@ -78,11 +94,3 @@ def run_quiz(questions, answers, options)
              elsif correctAnswer != options[answer]
                score -= 1
 
-          end
-     end
-     puts "you got #{score} out of #{questions.length()}"
-     return score
-end
-
-binding.pry
-0
