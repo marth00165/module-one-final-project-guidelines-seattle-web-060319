@@ -19,16 +19,4 @@ class Scraper
   def get_words
     item_container.css("b").map{|item| item.text}.compact
   end
-
-
 end
-
-example2 = Scraper.new
-
-
-
-# arr = example.item_container
-# arr2 = arr.shift
-# arr3 = arr2.shift
-
-# def split_words(arr)
